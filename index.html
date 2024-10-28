@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track & Save - Budget Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Track&Save</h1>
+            </div>
+            <nav class="navigation">
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#" class="nav-link">MoneyLog</a>
+                <a href="#" class="nav-link">Settings</a>
+            </nav>
+            <div class="profile">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture">
+                <p>Jane Cooper</p>
+                <p>janecoop@gmail.com</p>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header>
+                <h2>Dashboard</h2>
+                <div class="toggle-container">
+                    <input type="checkbox" id="theme-toggle">
+                    <label for="theme-toggle" class="toggle-label">🌙</label>
+                </div>
+            </header>
+            
+            <section class="dashboard">
+                <div class="balance-card">
+                    <p>Total Balance</p>
+                    <h3>$10,832.12</h3>
+                </div>
+                <div class="spending-card">
+                    <p>Total Spending</p>
+                    <h3>$230.32</h3>
+                </div>
+            </section>
+            
+            <section class="overview">
+                <h3>Overview</h3>
+                <canvas id="overviewChart"></canvas>
+            </section>
+            
+            <section class="activity">
+                <h3>Activity</h3>
+                <canvas id="activityChart"></canvas>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
