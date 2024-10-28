@@ -3,59 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track & Save - Budget Tracker</title>
+    <title>Budget Tracker</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="logo">
-                <h1>Track&Save</h1>
-            </div>
-            <nav class="navigation">
-                <a href="#" class="nav-link active">Dashboard</a>
-                <a href="#" class="nav-link">MoneyLog</a>
-                <a href="#" class="nav-link">Settings</a>
-            </nav>
-            <div class="profile">
-                <img src="https://via.placeholder.com/40" alt="Profile Picture">
-                <p>Jane Cooper</p>
-                <p>janecoop@gmail.com</p>
-            </div>
-        </aside>
-        
-        <main class="main-content">
-            <header>
-                <h2>Dashboard</h2>
-                <div class="toggle-container">
-                    <input type="checkbox" id="theme-toggle">
-                    <label for="theme-toggle" class="toggle-label">🌙</label>
-                </div>
-            </header>
-            
-            <section class="dashboard">
-                <div class="balance-card">
-                    <p>Total Balance</p>
-                    <h3>$10,832.12</h3>
-                </div>
-                <div class="spending-card">
-                    <p>Total Spending</p>
-                    <h3>$230.32</h3>
-                </div>
-            </section>
-            
-            <section class="overview">
-                <h3>Overview</h3>
-                <canvas id="overviewChart"></canvas>
-            </section>
-            
-            <section class="activity">
-                <h3>Activity</h3>
-                <canvas id="activityChart"></canvas>
-            </section>
-        </main>
+    <div class="sidebar">
+        <h1>Track&Save</h1>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="#">MoneyLog</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <img src="profile.jpg" alt="Jane Cooper">
+            <p>Jane Cooper</p>
+            <p>janecoop@gmail.com</p>
+        </div>
     </div>
+    
+    <div class="main-content">
+        <header>
+            <h2>Dashboard</h2>
+            <div class="toggle-container">
+                <input type="checkbox" id="theme-toggle">
+                <label for="theme-toggle" class="toggle-label">🌙</label>
+            </div>
+        </header>
+        
+        <div class="dashboard">
+            <div class="balance-card">
+                <h3>Total Balance</h3>
+                <p>$10,832.12</p>
+            </div>
+            <div class="spending-card">
+                <h3>Total Spending</h3>
+                <p>$230.32</p>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="overview">
+                <h3>Overview</h3>
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="activity">
+                <h3>Activity</h3>
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,46 +1,42 @@
-document.getElementById('theme-toggle').addEventListener('change', function() {
-    document.body.classList.toggle('dark-mode');
-});
-
-// Initialize overview bar chart
-const ctxOverview = document.getElementById('overviewChart').getContext('2d');
-const overviewChart = new Chart(ctxOverview, {
+// Bar Chart
+const barCtx = document.getElementById('barChart').getContext('2d');
+new Chart(barCtx, {
     type: 'bar',
     data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [{
-            label: 'Monthly Spending',
-            data: [300, 500, 400, 700, 1000, 900, 600, 800, 700, 850, 950, 1200],
-            backgroundColor: '#9b51e0',
-            borderRadius: 5
+            label: 'Spending',
+            data: [1200, 950, 1100, 1500, 900, 1300, 1700, 1200, 1400, 1500, 1000, 1200],
+            backgroundColor: '#b36bff',
+            borderRadius: 5,
         }]
     },
     options: {
         responsive: true,
         scales: {
-            y: { beginAtZero: true }
+            y: {
+                beginAtZero: true
+            }
         }
     }
 });
 
-// Initialize activity pie chart
-const ctxActivity = document.getElementById('activityChart').getContext('2d');
-const activityChart = new Chart(ctxActivity, {
+// Pie Chart
+const pieCtx = document.getElementById('pieChart').getContext('2d');
+new Chart(pieCtx, {
     type: 'doughnut',
     data: {
-        labels: ['Savings', 'Expenses', 'Investments'],
+        labels: ['Rent', 'Food', 'Entertainment', 'Savings'],
         datasets: [{
-            label: 'Activity Breakdown',
-            data: [60, 25, 15],
-            backgroundColor: ['#9b51e0', '#4f4f4f', '#bdbdbd'],
-            borderWidth: 1
+            data: [40, 25, 20, 15],
+            backgroundColor: ['#b36bff', '#3b82f6', '#f97316', '#10b981']
         }]
     },
     options: {
         responsive: true,
         plugins: {
             legend: {
-                position: 'right'
+                position: 'bottom'
             }
         }
     }
