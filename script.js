@@ -7,7 +7,7 @@ new Chart(barCtx, {
         datasets: [{
             label: 'Spending',
             data: [1200, 950, 1100, 1500, 900, 1300, 1700, 1200, 1400, 1500, 1000, 1200],
-            backgroundColor: '#b36bff',
+            backgroundColor: '#613DB6',
             borderRadius: 5,
         }]
     },
@@ -29,7 +29,7 @@ new Chart(pieCtx, {
         labels: ['Rent', 'Food', 'Entertainment', 'Savings'],
         datasets: [{
             data: [40, 25, 20, 15],
-            backgroundColor: ['#b36bff', '#3b82f6', '#f97316', '#10b981']
+            backgroundColor: ['#613DB6', '#3b82f6', '#f97316', '#10b981']
         }]
     },
     options: {

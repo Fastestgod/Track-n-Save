@@ -8,16 +8,20 @@
 </head>
 <body>
     <div class="sidebar">
-        <h1>Track&Save</h1>
-        <nav>
+        <div class="logoContainer">
+            <img src="images/logo.png" class="logo">
+            <h1>Track&Save</h1>
+        </div>
+        <nav id="navBar">
+            <h3>Manage</h3>
             <ul>
-                <li><a href="#" class="active">Dashboard</a></li>
-                <li><a href="#">MoneyLog</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#"> <img src=images/dashBoard.png class="managedPic"> Dashboard</a></li>
+                <li><a href="#"> <img src=images/moneyLog.png class="managedPic">Money<span class="logText">Log</span></a></li>
+                <li><a href="#"> <img src=images/settings.png class="managedPic">Settings</a></li>
             </ul>
         </nav>
         <div class="profile">
-            <img src="profile.jpg" alt="Jane Cooper">
+            <img src="images/profile.png" alt="Jane Cooper">
             <p>Jane Cooper</p>
             <p>janecoop@gmail.com</p>
         </div>
@@ -34,12 +38,19 @@
         
         <div class="dashboard">
             <div class="balance-card">
+                <img src=images/balanceImage.png class="dollars">
                 <h3>Total Balance</h3>
                 <p>$10,832.12</p>
             </div>
             <div class="spending-card">
+                <img src=images/SpendingImage.png class="dollars">
                 <h3>Total Spending</h3>
                 <p>$230.32</p>
+            </div>
+            <div class="saving-card">
+                <img src=images/savingsImage.png class="dollars">
+                <h3>Total Savings</h3>
+                <p>$1030.25</p>
             </div>
         </div>
 
