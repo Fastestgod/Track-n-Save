@@ -45,3 +45,18 @@ new Chart(pieCtx, {
 document.getElementById('theme-toggle').addEventListener('change', function () {
     document.body.classList.toggle('dark-mode', this.checked);
 });
+
+
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+
+menuToggle.addEventListener('click', (event) => {
+    event.stopPropagation(); 
+    sidebar.classList.toggle('active'); 
+});
+
+document.addEventListener('click', (event) => {
+    if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && event.target !== menuToggle) {
+        sidebar.classList.remove('active'); 
+    }
+});

@@ -27,7 +27,24 @@ body.dark-mode {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: background-color 0.3s, color 0.3s;
+    position: fixed; /* Keep the sidebar fixed */
+    left: 0; /* Align to the left */
+    top: 0; /* Align to the top */
+    z-index: 100; /* Ensure it appears above other content */
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Show sidebar when active */
+}
+
+.menu-toggle {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    display: none; /* Initially hidden */
 }
 
 body.dark-mode .sidebar {
@@ -39,7 +56,6 @@ body.dark-mode .sidebar {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 25px;
 }
 
 .logoContainer h1 {
@@ -102,7 +118,8 @@ body.dark-mode .sidebar h3 {
 .main-content {
     flex: 1;
     padding: 20px;
-    transition: background-color 0.3s, color 0.3s;
+    margin-left: 290px; /* Space for the sidebar */
+    transition: margin-left 0.3s ease; /* Smooth transition */
 }
 
 header {
@@ -114,18 +131,21 @@ header {
 
 .dashboard {
     display: flex;
-    gap: 200px;
+    justify-content: space-around;
+    gap: 20px; /* Reduced gap */
+    flex-wrap: wrap; /* Allow wrapping to fit */
 }
 
 /* Balance Card */
 .balance-card {
-    margin-top: 20px;
-    width: 290px;
-    height: 180px;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     background-color: #020202;
     color: #fff;
-    padding: 20px;
-    border-radius: 15px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -135,13 +155,14 @@ body.dark-mode .balance-card {
 
 /* Spending Card */
 .spending-card {
-    margin-top: 20px;
-    width: 290px;
-    height: 180px;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     background-color: #6d6b6b;
     color: #fff;
-    padding: 20px;
-    border-radius: 15px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -151,13 +172,14 @@ body.dark-mode .spending-card {
 
 /* Saving Card */
 .saving-card {
-    margin-top: 20px;
-    width: 290px;
-    height: 180px;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     background-color: #10b981;
     color: #fff;
-    padding: 20px;
-    border-radius: 15px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -185,30 +207,32 @@ body.dark-mode .saving-card {
 /* Charts Section */
 .charts {
     display: flex;
-    gap: 20px;
-    margin-top: 120px;
+    gap: 40px;
+    margin-top: 50px; /* Reduced margin */
+    flex-wrap: wrap; /* Allow wrapping to fit */
 }
 
 .overview, .activity {
     flex: 1;
     text-align: center;
+    min-width: 220px; /* Minimum width for chart containers */
+    max-width: 100%; /* Ensure it doesn't overflow */
 }
 
 #barChart {
     width: 100% !important;
-    height: auto !important;
+    height: auto !important; /* Maintain aspect ratio */
+    max-height: 300px; /* Set max height for pie chart */
 }
 
 #pieChart {
-    margin-left: 190px;
-    margin-top: 10px;
-    width: 50% !important;
-    height: auto !important;
+    width: 100% !important;
+    height: auto !important; /* Maintain aspect ratio */
+    max-height: 300px; /* Set max height for pie chart */
 }
 
 .toggle-container {
-  display: flex;
-  align-items: center;
+    position: relative;
 }
 
 input[type="checkbox"] {
@@ -229,15 +253,43 @@ body.dark-mode .toggle-label {
     color: #e0e0e0;
 }
 
-/* Responsive Styles */
+/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
-    .charts {
-        flex-direction: column;
+    .menu-toggle {
+        color: black;
+        display: block; /* Show the toggle on smaller screens */
     }
-}
 
-@media (max-width: 480px) {
-    #pieChart {
-        width: 70% !important;
+    .sidebar {
+        transform: translateX(-100%); 
+        transition: transform 0.3s ease; 
+    }
+
+    .sidebar.active {
+        transform: translateX(0); 
+    }
+
+    .main-content {
+        margin-left: 0; /* No margin when sidebar is hidden */
+    }
+
+    .dashboard {
+        flex-direction: column; /* Stack cards vertically */
+    }
+
+    .charts {
+        flex-direction: column; /* Stack charts vertically */
+    }
+
+    .overview,
+    .activity {
+        max-width: 100%; /* Ensure charts fit */
+        min-width: auto; /* Reset min width for small screens */
+    }
+
+    .balance-card,
+    .spending-card,
+    .saving-card {
+        width: 100%; /* Full width for small screens */
     }
 }
