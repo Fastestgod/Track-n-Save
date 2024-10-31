@@ -207,23 +207,23 @@ body.dark-mode .saving-card {
 }
 
 .toggle-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  input[type="checkbox"] {
-    display: none;
-  }
-  
-  .toggle-label {
-    cursor: pointer;
-    font-size: 24px; /* Adjust font size as needed */
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  input[type="checkbox"]:checked + .toggle-label {
-    transform: rotate(180deg);
-  }
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-label {
+  cursor: pointer;
+  font-size: 24px; /* Adjust font size as needed */
+  transition: transform 0.3s ease-in-out;
+}
+
+input[type="checkbox"]:checked + .toggle-label {
+  transform: rotate(180deg);
+}
 
 body.dark-mode .toggle-label {
     color: #e0e0e0;
