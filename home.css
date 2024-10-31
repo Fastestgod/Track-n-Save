@@ -178,6 +178,10 @@ body.dark-mode .saving-card {
     margin-right: 100px;
 }
 
+.dollars
+{
+    width: 50px;
+}
 /* Charts Section */
 .charts {
     display: flex;
