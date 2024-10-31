@@ -41,3 +41,7 @@ new Chart(pieCtx, {
         }
     }
 });
+//toggle dark mode
+document.getElementById('theme-toggle').addEventListener('change', function () {
+    document.body.classList.toggle('dark-mode', this.checked);
+});
