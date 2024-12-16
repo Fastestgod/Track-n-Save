@@ -1,0 +1,295 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f0f2f5;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.sidebar {
+    width: 290px;
+    height: 100vh;
+    background-color: #1c1c1c;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed; /* Keep the sidebar fixed */
+    left: 0; /* Align to the left */
+    top: 0; /* Align to the top */
+    z-index: 100; /* Ensure it appears above other content */
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Show sidebar when active */
+}
+
+.menu-toggle {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+body.dark-mode .sidebar {
+    background-color: #2a2a2a;
+}
+
+.logoContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoContainer h1 {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+/* Sidebar Heading */
+.sidebar h3 {
+    margin-top: 60px;
+    margin-left: 30px;
+    font-size: 26px;
+    color: #7E7E7E;
+}
+
+body.dark-mode .sidebar h3 {
+    color: #b0b0b0;
+}
+
+/* Sidebar Navigation */
+.sidebar nav ul {
+    list-style: none;
+    margin-left: 45px;
+}
+
+.sidebar nav ul li {
+    margin-top: 50px;
+}
+
+.sidebar nav ul li a {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.managedPic {
+    margin-right: 10px;
+    width: 30px;
+}
+
+.logText {
+    color: #613DB6;
+}
+
+/* Sidebar Profile */
+.profile {
+    margin-top: auto;
+    text-align: center;
+}
+
+.profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 290px; /* Space for the sidebar */
+    transition: margin-left 0.3s ease; /* Smooth transition */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px; /* Reduced gap */
+    flex-wrap: wrap; /* Allow wrapping to fit */
+}
+
+/* Balance Card */
+.balance-card {
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #020202;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .balance-card {
+    background-color: #333333;
+}
+
+/* Spending Card */
+.spending-card {
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #6d6b6b;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .spending-card {
+    background-color: #4a4a4a;
+}
+
+/* Saving Card */
+.saving-card {
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #10b981;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .saving-card {
+    background-color: #0d8e71;
+}
+
+.balance-card h3, .spending-card h3, .saving-card h3 {
+    font-size: 18px;
+    margin-right: 100px;
+    margin-top: 40px;
+}
+
+.balance-card p, .spending-card p, .saving-card p {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 100px;
+}
+
+.dollars
+{
+    width: 50px;
+}
+/* Charts Section */
+.charts {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px; /* Reduced margin */
+    flex-wrap: wrap; /* Allow wrapping to fit */
+}
+
+.overview, .activity {
+    flex: 1;
+    text-align: center;
+    min-width: 220px; /* Minimum width for chart containers */
+    max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+#barChart {
+    width: 100% !important;
+    height: auto !important; /* Maintain aspect ratio */
+    max-height: 300px; /* Set max height for pie chart */
+}
+
+#pieChart {
+    width: 100% !important;
+    height: auto !important; /* Maintain aspect ratio */
+    max-height: 300px; /* Set max height for pie chart */
+}
+
+.toggle-container {
+    position: relative;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-label {
+  cursor: pointer;
+  font-size: 24px; /* Adjust font size as needed */
+  transition: transform 0.3s ease-in-out;
+}
+
+input[type="checkbox"]:checked + .toggle-label {
+  transform: rotate(180deg);
+}
+
+body.dark-mode .toggle-label {
+    color: #e0e0e0;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .menu-toggle {
+        color: black;
+        display: block; /* Show the toggle on smaller screens */
+    }
+
+    .sidebar {
+        transform: translateX(-100%); 
+        transition: transform 0.3s ease; 
+    }
+
+    .sidebar.active {
+        transform: translateX(0); 
+    }
+
+    .main-content {
+        margin-left: 0; /* No margin when sidebar is hidden */
+    }
+
+    .dashboard {
+        flex-direction: column; /* Stack cards vertically */
+    }
+
+    .charts {
+        flex-direction: column; /* Stack charts vertically */
+    }
+
+    .overview,
+    .activity {
+        max-width: 100%; /* Ensure charts fit */
+        min-width: auto; /* Reset min width for small screens */
+    }
+
+    .balance-card,
+    .spending-card,
+    .saving-card {
+        width: 100%; /* Full width for small screens */
+    }
+}

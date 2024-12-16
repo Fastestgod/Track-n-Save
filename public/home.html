@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget Tracker</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <div class="sidebar" id="sidebar">
+      <div class="logoContainer">
+        <img src="images/logo.png" class="logo" />
+        <h1>Track&Save</h1>
+      </div>
+      <nav id="navBar">
+        <h3>Manage</h3>
+        <ul>
+          <li>
+            <a href="#">
+              <img src="images/dashBoard.png" class="managedPic" /> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="moneylog.html">
+              <img src="images/moneyLog.png" class="managedPic" />Money<span
+                class="logText"
+                >Log</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/settings.png" class="managedPic" />Settings</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="profile">
+        <img src="images/profile.png" alt="Jane Cooper" />
+        <p>Jane Cooper</p>
+        <p>janecoop@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <header>
+        <div class="menu-toggle" id="menuToggle">&#9776;</div>
+        <h2>Dashboard</h2>
+        <div class="toggle-container">
+          <input type="checkbox" id="theme-toggle" />
+          <label for="theme-toggle" class="toggle-label">🌙</label>
+        </div>
+      </header>
+
+      <div class="dashboard">
+        <div class="balance-card">
+          <img src="images/balanceImage.png" class="dollars" />
+          <h3>Total Balance</h3>
+          <p id="total-balance"></p>
+        </div>
+        <div class="spending-card">
+          <img src="images/SpendingImage.png" class="dollars" />
+          <h3>Total Spending</h3>
+          <p id="total-spending"></p>
+        </div>
+        <div class="saving-card">
+          <img src="images/savingsImage.png" class="dollars" />
+          <h3>Total Savings</h3>
+          <p id="total-savings"></p>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="overview">
+          <h3>Overview</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="activity">
+          <h3>Month Activity</h3>
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="home.js"></script>
+  </body>
+</html>
