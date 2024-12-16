@@ -104,6 +104,10 @@ function initializeCharts() {
     },
   });
 }
+//change displayed username n email
+//document.getElementById('username').textContent=;
+//document.getElementById('email').textContent =;
+
 
 //toggle dark mode
 document.getElementById("theme-toggle").addEventListener("change", function () {
