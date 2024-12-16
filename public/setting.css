@@ -1,63 +1,221 @@
-/* General Styles */
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body and Layout */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f6fa;
-    color: #333;
+  display: flex;
+  background-color: #f5f6fa;
+  color: #333;
+}
+.sidebar {
+  width: 290px;
+  height: 100vh;
+  background-color: #1c1c1c;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed; /* Keep the sidebar fixed */
+  left: 0; /* Align to the left */
+  top: 0; /* Align to the top */
+  z-index: 100; /* Ensure it appears above other content */
+  transition: transform 0.3s ease; /* Add transition for smooth effect */
+}
+
+.sidebar.active {
+  transform: translateX(0); /* Show sidebar when active */
+}
+
+.menu-toggle {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  display: none; /* Initially hidden */
+}
+
+.logoContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoContainer h1 {
+  font-size: 28px;
+  color: #ffffff;
+}
+
+/* Sidebar Heading */
+.sidebar h3 {
+  margin-top: 60px;
+  margin-left: 30px;
+  font-size: 26px;
+  color: #7e7e7e;
+}
+
+/* Sidebar Navigation */
+.sidebar nav ul {
+  list-style: none;
+  margin-left: 45px;
+}
+
+.sidebar nav ul li {
+  margin-top: 50px;
+}
+
+.sidebar nav ul li a {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.managedPic {
+  margin-right: 10px;
+  width: 30px;
+}
+
+.logText {
+  color: #613db6;
+}
+
+/* Sidebar Profile */
+.profile {
+  margin-top: auto;
+  text-align: center;
+}
+
+.profile img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 290px; /* Sidebar width to avoid content overlap */
+  padding: 30px;
+  width: calc(100% - 290px);
+  background-color: #f5f6fa;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+header h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Settings Content */
+.content-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.settings-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.settings-section:last-child {
+  border-bottom: none;
+}
+
+.settings-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #613db6;
+}
+
+button {
+  background-color: #613db6;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4a2f91;
+}
+
+/* Logout Section */
+.logout-section button {
+  background-color: #ff4d4f;
+  font-weight: bold;
+}
+
+.logout-section button:hover {
+  background-color: #e33c3e;
+}
+
+/* Profile Section at Bottom */
+.profile p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* Responsive Sidebar Toggle */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 100;
   }
-  
-  .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .sidebar.active {
+    transform: translateX(0);
   }
-  
-  h1, h2 {
-    text-align: center;
-  }
-  
-  .section {
-    margin: 20px 0;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  label {
+
+  .menu-toggle {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    z-index: 101;
   }
-  
-  input, button {
+
+  .main-content {
+    margin-left: 0;
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
   }
-  
-  button {
-    background-color: #6a5acd;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  button:hover {
-    background-color: #5a4cbd;
-  }
-  
-  .logout-section button {
-    background-color: #ff4d4f;
-  }
-  
-  .logout-section button:hover {
-    background-color: #e33c3e;
-  }
-  
+}

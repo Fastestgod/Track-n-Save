@@ -1,61 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Settings</title>
   <link rel="stylesheet" href="setting.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Settings</h1>
-
-    <!-- Edit Username -->
-    <div class="section">
-      <h2>Edit Username</h2>
-      <form>
-        <label for="username">New Username:</label>
-        <input type="text" id="username" placeholder="Enter new username" required />
-        <button type="submit">Save Username</button>
-      </form>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logoContainer">
+      <img src="images/logo.png" class="logo" />
+      <h1>Track&Save</h1>
     </div>
-
-    <!-- Edit Password -->
-    <div class="section">
-      <h2>Edit Password</h2>
-      <form>
-        <label for="current-password">Current Password:</label>
-        <input type="password" id="current-password" placeholder="Enter current password" required />
-        <label for="new-password">New Password:</label>
-        <input type="password" id="new-password" placeholder="Enter new password" required />
-        <button type="submit">Save Password</button>
-      </form>
+    <nav id="navBar">
+      <h3>Manage</h3>
+      <ul>
+        <li>
+          <a href="#">
+            <img src="images/dashBoard.png" class="managedPic" /> Dashboard</a
+          >
+        </li>
+        <li>
+          <a href="moneylog.html">
+            <img src="images/moneyLog.png" class="managedPic" />Money<span
+              class="logText"
+              >Log</span
+            ></a
+          >
+        </li>
+        <li>
+          <a href="setting.html">
+            <img src="images/settings.png" class="managedPic" />Settings</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="profile">
+      <img src="images/profile.jpg" alt="Guest" />
+      <p id="username">Guest</p>
+      <p id="email">Example123@gmail.com</p>
     </div>
+  </div>
 
-    <!-- Edit Email -->
-    <div class="section">
-      <h2>Edit Email</h2>
-      <form>
-        <label for="email">New Email:</label>
-        <input type="email" id="email" placeholder="Enter new email" required />
-        <button type="submit">Save Email</button>
-      </form>
-    </div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <h1>Settings</h1>
+    </header>
 
-    <!-- Upload Profile Picture -->
-    <div class="section">
-      <h2>Upload Profile Picture</h2>
-      <form>
-        <label for="profile-pic">Choose File:</label>
-        <input type="file" id="profile-pic" accept="image/*" />
-        <button type="submit">Upload Picture</button>
-      </form>
-    </div>
+    <div class="content-container">
+      <!-- Edit Username -->
+      <div class="settings-section">
+        <h2>Edit Username</h2>
+        <form>
+          <label for="username">New Username:</label>
+          <input type="text" id="username" placeholder="Enter new username" required />
+          <button type="submit">Save Username</button>
+        </form>
+      </div>
 
-    <!-- Logout -->
-    <div class="section logout-section">
-      <h2>Logout</h2>
-      <button id="logoutBtn">Logout</button>
+      <!-- Edit Password -->
+      <div class="settings-section">
+        <h2>Edit Password</h2>
+        <form>
+          <label for="current-password">Current Password:</label>
+          <input type="password" id="current-password" placeholder="Enter current password" required />
+          <label for="new-password">New Password:</label>
+          <input type="password" id="new-password" placeholder="Enter new password" required />
+          <button type="submit">Save Password</button>
+        </form>
+      </div>
+
+      <!-- Edit Email -->
+      <div class="settings-section">
+        <h2>Edit Email</h2>
+        <form>
+          <label for="email">New Email:</label>
+          <input type="email" id="email" placeholder="Enter new email" required />
+          <button type="submit">Save Email</button>
+        </form>
+      </div>
+
+      <!-- Upload Profile Picture -->
+      <div class="settings-section">
+        <h2>Upload Profile Picture</h2>
+        <form>
+          <label for="profile-pic">Choose File:</label>
+          <input type="file" id="profile-pic" accept="image/*" />
+          <button type="submit">Upload Picture</button>
+        </form>
+      </div>
+
+      <!-- Logout -->
+      <div class="settings-section logout-section">
+        <h2>Logout</h2>
+        <button id="logoutBtn">Logout</button>
+      </div>
     </div>
   </div>
 
