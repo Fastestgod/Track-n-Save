@@ -118,10 +118,6 @@ async function getTransactions() {
 }
 
 loadData();
-//change displayed username n email
-//document.getElementById('username').textContent=;
-//document.getElementById('email').textContent =;
-
 
 //DELETE ROW
 document.addEventListener("click", async (e) => {

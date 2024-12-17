@@ -102,10 +102,20 @@ body {
 
 /* Main Content */
 .main-content {
-  flex: 1;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin-left: 290px; /* Space for the sidebar */
-  transition: margin-left 0.3s ease; /* Smooth transition */
+}
+
+.money-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 header {
@@ -150,7 +160,11 @@ input[type="checkbox"]:checked + .toggle-label {
   }
 
   .main-content {
-    margin-left: 0; /* No margin when sidebar is hidden */
+    padding: 2%;
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -218,26 +232,25 @@ input[type="checkbox"]:checked + .toggle-label {
   color: #333;
 }
 
+.transaction-list table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #333;
+  table-layout: fixed;
+}
+
 .transaction-list th,
 .transaction-list td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ccc;
-}
-
-.transaction-list th {
-  background-color: #f5f5f5;
-  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .transaction-list tbody tr:nth-child(even) {
   background-color: #f9f9f9;
-}
-
-.transaction-list table {
-  width: 100%;
-  border-collapse: collapse;
-  color: #333;
 }
 
 /* Dark Mode */
