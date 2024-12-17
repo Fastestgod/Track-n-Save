@@ -2,7 +2,9 @@ const transactionModel = require("../models/transaction_model");
 
 module.exports.getTransaction = async (req, res) => {
   try {
-    const transactions = await transactionModel.find();
+    const userId = req.user.id;
+    const transactions = await transactionModel.find({ userId });
+
     res.send(transactions);
   } catch (error) {
     console.error("Error fetching transactions:", error);
@@ -27,6 +29,7 @@ module.exports.saveTransaction = async (req, res) => {
       description,
       category,
       amount,
+      userId: req.user.id,
     });
     console.log("Transaction added successfully:", newTransaction);
     res.send(newTransaction);
@@ -50,6 +53,15 @@ module.exports.updateTransaction = async (req, res) => {
   }
 
   try {
+    const transaction = await transactionModel.findById(_id);
+    if (!transaction) {
+      return res.status(404).send("Transaction not found.");
+    }
+
+    if (transaction.userId.toString() !== req.user.id) {
+      return res.status(403).send("Not authorized to update this transaction.");
+    }
+
     await transactionModel.findByIdAndUpdate(_id, {
       date,
       description,
@@ -71,6 +83,15 @@ module.exports.deleteTransaction = async (req, res) => {
   }
 
   try {
+    const transaction = await transactionModel.findById(_id);
+    if (!transaction) {
+      return res.status(404).send("Transaction not found.");
+    }
+
+    if (transaction.userId.toString() !== req.user.id) {
+      return res.status(403).send("Not authorized to delete this transaction.");
+    }
+
     await transactionModel.findByIdAndDelete(_id);
     res.send("Transaction deleted successfully.");
   } catch (error) {
@@ -79,10 +100,11 @@ module.exports.deleteTransaction = async (req, res) => {
   }
 };
 
-//TODO:
 module.exports.getReport = async (req, res) => {
   try {
-    const transactions = await transactionModel.find();
+    const userId = req.user.id;
+
+    const transactions = await transactionModel.find({ userId });
 
     let totalBalance = transactions
       .filter((t) => t.category.toLowerCase() === "income")

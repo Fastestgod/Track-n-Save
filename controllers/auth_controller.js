@@ -10,6 +10,7 @@ module.exports.registerUser = async (req, res) => {
 
   try {
     const userExists = await User.findOne({ email });
+    console.log(userExists);
     if (userExists) {
       return res.status(400).send("Email already exists.");
     }
@@ -44,7 +45,12 @@ module.exports.loginUser = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.json({ message: "Login successful", token });
+    res.json({
+      message: "Login successful",
+      token,
+      fullname: user.fullname,
+      email: user.email,
+    });
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).send("Error logging in.");
