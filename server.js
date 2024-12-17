@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(
   express.static(path.join(__dirname, "public"), { extensions: ["html"] })
 );
+app.use("/api/auth", auth_routes);
 
 app.use("/api", routes);
 
