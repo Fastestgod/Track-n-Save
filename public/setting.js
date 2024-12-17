@@ -8,23 +8,31 @@ menuToggle.addEventListener("click", (event) => {
   sidebar.classList.toggle("active");
 });
 
-document.getElementById("logoutBtn")
-        .addEventListener("click", async function (event) {
-          
-              localStorage.removeItem("authToken");
-              localStorage.removeItem("fullname");
-              localStorage.removeItem("email");
+document.addEventListener("DOMContentLoaded", function() {
+  // Make sure the logout button exists before adding the event listener
+  const logoutBtn = document.getElementById("logoutBtn");
+  
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function (event) {
+      // Remove data from localStorage
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("fullname");
+      localStorage.removeItem("email");
 
-              Swal.fire({
-                icon: "success",
-                title: "Logged Out",
-                text: "You have been logged out successfully.",
-                timer: 1500,
-                showConfirmButton: false,
-              }).then(() => {
-                window.location.href = "login.html";
-              });
-             });
+      // Show SweetAlert success message after logout
+      Swal.fire({
+        icon: "success",
+        title: "Logged Out",
+        text: "You have been logged out successfully.",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        // Redirect to login page after the alert
+        window.location.href = "login.html";
+      });
+    });
+  }
+});
             
 // Event listener for form submission
 document.getElementById("usernameForm").addEventListener("submit", function(event) {
@@ -60,5 +68,7 @@ document.getElementById("usernameForm").addEventListener("submit", function(even
       timer: 1500,
       showConfirmButton: false,
     });
+    document.getElementById("username").innerText = localStorage.getItem("fullname");
+    document.getElementById("email").innerText = localStorage.getItem("email");
   }
 });
