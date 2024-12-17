@@ -1,7 +1,7 @@
 const User = require("../models/user_model");
 
 module.exports.registerUser = async (req, res) => {
-  const { email, password } = req.body;
+  const {fullname, email, password } = req.body;
 
   if (!fullname || !email || !password) {
     return res.status(400).send("Please provide all required fields.");
