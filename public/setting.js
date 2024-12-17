@@ -1,6 +1,13 @@
 //sideprofile
 document.getElementById("username").innerText = localStorage.getItem("fullname");
 document.getElementById("email").innerText = localStorage.getItem("email");
+const sidebar = document.getElementById("sidebar");
+
+menuToggle.addEventListener("click", (event) => {
+  event.stopPropagation();
+  sidebar.classList.toggle("active");
+});
+
 document.getElementById("logoutBtn")
         .addEventListener("click", async function (event) {
           
@@ -18,7 +25,7 @@ document.getElementById("logoutBtn")
                 window.location.href = "login.html";
               });
              });
-                
+             
 
             
 
