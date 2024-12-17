@@ -3,8 +3,8 @@ const User = require("../models/user_model");
 module.exports.registerUser = async (req, res) => {
   const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).send("Please provide both email and password.");
+  if (!fullname || !email || !password) {
+    return res.status(400).send("Please provide all required fields.");
   }
 
   try {
@@ -13,7 +13,7 @@ module.exports.registerUser = async (req, res) => {
       return res.status(400).send("Email already exists.");
     }
 
-    const newUser = await User.create({ email, password });
+    const newUser = await User.create({ fullname, email, password });
     res.status(201).send("User registered successfully.");
   } catch (error) {
     console.error("Error registering user:", error);
