@@ -175,7 +175,7 @@ document.addEventListener("click", async (e) => {
           return;
         }
         const response = await axios.post(
-          url,
+          'api/delete',
           { _id: transactionId },
           {
             headers: {
