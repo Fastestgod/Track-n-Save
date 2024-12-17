@@ -16,8 +16,18 @@ loadData();
 
 async function getTransactions() {
   const url = `/api/report`;
+  const token = localStorage.getItem("authToken");
+
+  if (!token) {
+    alert("No token found, please login.");
+  }
+
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -104,10 +114,6 @@ function initializeCharts() {
     },
   });
 }
-//change displayed username n email
-//document.getElementById('username').textContent=;
-//document.getElementById('email').textContent =;
-
 
 //toggle dark mode
 document.getElementById("theme-toggle").addEventListener("change", function () {
@@ -131,3 +137,22 @@ document.addEventListener("click", (event) => {
     sidebar.classList.remove("active");
   }
 });
+
+let authToken = null;
+
+function checkAuthToken() {
+  const token = localStorage.getItem("authToken");
+
+  if (!token) {
+    window.location.href = "login.html";
+  } else {
+    authToken = token;
+    console.log("Token found:", authToken);
+  }
+}
+
+checkAuthToken();
+
+document.getElementById("username").innerText =
+  localStorage.getItem("fullname");
+document.getElementById("email").innerText = localStorage.getItem("email");

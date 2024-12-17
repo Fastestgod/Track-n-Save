@@ -55,6 +55,9 @@
 
             if (response.status === 200) {
               localStorage.setItem("authToken", response.data.token);
+              localStorage.setItem("fullname", response.data.fullname);
+              localStorage.setItem("email", response.data.email);
+
               window.location.href = "home.html";
             } else {
               Swal.fire({

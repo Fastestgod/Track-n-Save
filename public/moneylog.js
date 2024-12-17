@@ -97,8 +97,19 @@ async function loadData() {
 
 async function saveTransaction(transaction) {
   const url = `/api/save`;
+  const authToken = localStorage.getItem("authToken");
+
+  if (!authToken) {
+    alert("No token found, please login.");
+    return;
+  }
+
   try {
-    const response = await axios.post(url, transaction);
+    const response = await axios.post(url, transaction, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -108,8 +119,19 @@ async function saveTransaction(transaction) {
 
 async function getTransactions() {
   const url = `/api`;
+  const authToken = localStorage.getItem("authToken");
+
+  if (!authToken) {
+    alert("No token found, please login.");
+    return;
+  }
+
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -118,6 +140,9 @@ async function getTransactions() {
 }
 
 loadData();
+//change displayed username n email
+//document.getElementById('username').textContent=;
+//document.getElementById('email').textContent =;
 
 //DELETE ROW
 document.addEventListener("click", async (e) => {
@@ -144,7 +169,20 @@ document.addEventListener("click", async (e) => {
 
     if (result.isConfirmed) {
       try {
-        const response = await axios.post("api/delete", { _id: transactionId });
+        const authToken = localStorage.getItem("authToken");
+        if (!authToken) {
+          alert("No token found, please login.");
+          return;
+        }
+        const response = await axios.post(
+          url,
+          { _id: transactionId },
+          {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
+        );
 
         if (response.status === 200) {
           Swal.fire({
@@ -166,3 +204,22 @@ document.addEventListener("click", async (e) => {
     }
   }
 });
+
+let authToken = null;
+
+function checkAuthToken() {
+  const token = localStorage.getItem("authToken");
+
+  if (!token) {
+    window.location.href = "login.html";
+  } else {
+    authToken = token;
+    console.log("Token found:", authToken);
+  }
+}
+
+checkAuthToken();
+
+document.getElementById("username").innerText =
+  localStorage.getItem("fullname");
+document.getElementById("email").innerText = localStorage.getItem("email");
