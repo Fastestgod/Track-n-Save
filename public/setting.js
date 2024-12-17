@@ -2,7 +2,7 @@
 document.getElementById("username").innerText = localStorage.getItem("fullname");
 document.getElementById("email").innerText = localStorage.getItem("email");
 document.getElementById("logoutBtn")
-        .addEventListener("", async function (event) {
+        .addEventListener("click", async function (event) {
           
               localStorage.removeItem("authToken");
               localStorage.removeItem("fullname");
