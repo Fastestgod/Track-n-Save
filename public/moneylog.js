@@ -90,6 +90,8 @@ function addTransactionToTable(transaction) {
 
 async function loadData() {
   let transactions = await getTransactions();
+  // Sort transactions by date (newest first)
+  transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
   for (const transaction of transactions) {
     addTransactionToTable(transaction);
   }
