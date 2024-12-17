@@ -3,11 +3,11 @@ let data = {};
 async function loadData() {
   data = await getTransactions();
   initializeCharts();
-  document.getElementById("total-balance").innerText = `$${data.totalBalance}`;
+  document.getElementById("total-balance").innerText = `$${data.totalBalance.toFixed(2)}`;
   document.getElementById(
     "total-spending"
-  ).innerText = `$${data.totalSpending}`;
-  document.getElementById("total-savings").innerText = `$${data.totalSavings}`;
+  ).innerText = `$${data.totalSpending.toFixed(2)}`;
+  document.getElementById("total-savings").innerText = `$${data.totalSavings.toFixed(2)}`;
 
   console.log(data);
 }
