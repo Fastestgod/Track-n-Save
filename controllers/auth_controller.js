@@ -1,7 +1,8 @@
 const User = require("../models/user_model");
+const jwt = require("jsonwebtoken");
 
 module.exports.registerUser = async (req, res) => {
-  const {fullname, email, password } = req.body;
+  const { fullname, email, password } = req.body;
 
   if (!fullname || !email || !password) {
     return res.status(400).send("Please provide all required fields.");
@@ -21,9 +22,6 @@ module.exports.registerUser = async (req, res) => {
   }
 };
 
-const User = require("../models/user_model");
-const jwt = require("jsonwebtoken");
-
 module.exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -42,7 +40,9 @@ module.exports.loginUser = async (req, res) => {
       return res.status(400).send("Invalid email or password.");
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
     res.json({ message: "Login successful", token });
   } catch (error) {
