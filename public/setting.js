@@ -8,131 +8,122 @@ menuToggle.addEventListener("click", (event) => {
   sidebar.classList.toggle("active");
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-  // Make sure the logout button exists before adding the event listener
-  const logoutBtn = document.getElementById("logoutBtn");
-  
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", function (event) {
-      // Remove data from localStorage
-      localStorage.removeItem("authToken");
-      localStorage.removeItem("fullname");
-      localStorage.removeItem("email");
+const userId = localStorage.getItem("userId"); // Assuming userId is stored in localStorage
 
-      // Show SweetAlert success message after logout
+document.getElementById("username").innerText = localStorage.getItem("fullname");
+document.getElementById("email").innerText = localStorage.getItem("email");
+
+// Update Username
+document.getElementById("usernameForm").addEventListener("submit", async function (event) {
+  event.preventDefault();
+  const newUsername = document.getElementById("usernameInput").value;
+
+  if (newUsername.trim() !== "") {
+    const response = await fetch('/update-user', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, fullname: newUsername }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      localStorage.setItem("fullname", newUsername); // Update in localStorage for the session
+      document.getElementById("username").innerText = newUsername;
+
       Swal.fire({
         icon: "success",
-        title: "Logged Out",
-        text: "You have been logged out successfully.",
+        title: "Username Updated",
+        text: "Your username has been updated successfully.",
         timer: 1500,
         showConfirmButton: false,
-      }).then(() => {
-        // Redirect to login page after the alert
-        window.location.href = "login.html";
       });
-    });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: data.message || "An error occurred.",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
   }
 });
-            
-// Event listener for form submission
-document.getElementById("usernameForm").addEventListener("submit", function (event) {
-  // Prevent the default form submission behavior
+
+// Update Email
+document.getElementById("emailForm").addEventListener("submit", async function (event) {
   event.preventDefault();
+  const newEmail = document.getElementById("emailInput").value;
 
-  // Get the new username from the input field
-  const newUsername = document.getElementById("username").value;
-
-  // Check if the username is not empty
-  if (newUsername.trim() !== "") {
-    // Save the new username to localStorage
-    localStorage.setItem("fullname", newUsername);
-
-    // Update the profile view with the new username
-    document.getElementById("username").innerText = newUsername;
-
-    // Optionally, show a success message (e.g., using SweetAlert)
-    Swal.fire({
-      icon: "success",
-      title: "Username Updated",
-      text: "Your username has been updated successfully.",
-      timer: 1500,
-      showConfirmButton: false,
+  if (newEmail.trim() !== "") {
+    const response = await fetch('/update-user', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, email: newEmail }),
     });
 
-    // Optionally, clear the input field after submission
-    document.getElementById("username").value = "";
+    const data = await response.json();
 
-  } else {
-    // Show an error message if the username is empty
-    Swal.fire({
-      icon: "error",
-      title: "Invalid Username",
-      text: "Username cannot be empty.",
-      timer: 1500,
-      showConfirmButton: false,
-    });
+    if (response.ok) {
+      localStorage.setItem("email", newEmail);
+      document.getElementById("email").innerText = newEmail;
+
+      Swal.fire({
+        icon: "success",
+        title: "Email Updated",
+        text: "Your email has been updated successfully.",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: data.message || "An error occurred.",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
   }
 });
-// Event listener for Password form submission
-document.getElementById("passwordForm").addEventListener("submit", function (event) {
-  event.preventDefault();
 
+// Update Password
+document.getElementById("passwordForm").addEventListener("submit", async function (event) {
+  event.preventDefault();
   const currentPassword = document.getElementById("current-password").value;
   const newPassword = document.getElementById("new-password").value;
 
-  // Assuming you are verifying the current password somehow before allowing the update
   if (currentPassword && newPassword) {
-    // Update password (assuming you're storing password in localStorage)
-    localStorage.setItem("password", newPassword);
-
-    Swal.fire({
-      icon: "success",
-      title: "Password Updated",
-      text: "Your password has been updated successfully.",
-      timer: 1500,
-      showConfirmButton: false,
+    const response = await fetch('/update-password', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, currentPassword, newPassword }),
     });
 
-    document.getElementById("current-password").value = ""; // Clear input
-    document.getElementById("new-password").value = ""; // Clear input
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Invalid Password",
-      text: "Both fields are required.",
-      timer: 1500,
-      showConfirmButton: false,
-    });
+    const data = await response.json();
+
+    if (response.ok) {
+      Swal.fire({
+        icon: "success",
+        title: "Password Updated",
+        text: "Your password has been updated successfully.",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: data.message || "An error occurred.",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
   }
 });
 
-// Event listener for Email form submission
-document.getElementById("emailForm").addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const newEmail = document.getElementById("email").value;
-
-  if (newEmail.trim() !== "") {
-    localStorage.setItem("email", newEmail);
-    document.getElementById("email").innerText = newEmail;
-
-    Swal.fire({
-      icon: "success",
-      title: "Email Updated",
-      text: "Your email has been updated successfully.",
-      timer: 1500,
-      showConfirmButton: false,
-    });
-
-    document.getElementById("email").value = ""; // Clear input
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Invalid Email",
-      text: "Email cannot be empty.",
-      timer: 1500,
-      showConfirmButton: false,
-    });
-  }
+// Logout
+document.getElementById("logoutBtn").addEventListener("click", function () {
+  localStorage.clear();
+  window.location.href = "login.html"; // Redirect to login page
 });
-
